@@ -168,7 +168,6 @@
                 $.harpia.httpget("{{ route('academico.async.lancamentonotas.table') }}?"+ "ofd_id=" + ofertaDisciplina)
                     .done(function (response) {
                         if(!$.isEmptyObject(response)){
-                            console.log(response);
                             $(".table-notas").empty();
                             $(".table-notas").append(response);
                         } else {

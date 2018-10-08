@@ -14,14 +14,14 @@
     </thead>
     <tbody>
     @foreach($matriculas as $matricula)
-        <tr id="{{ $loop->index }}">
+        <tr id="row_{{ $loop->index }}">
             <td>{{ $matricula->getAluno->pessoa->pes_nome }}</td>
             <td>{!! Form::number('nota_1', $matricula->mof_nota1 ? number_format($matricula->mof_nota1, 2) : $matricula->mof_nota1, ['class' => 'form-control', 'min' => 0, 'max' => 10, 'step' => 0.01, 'required']); !!}</td>
             <td>{!! Form::number('nota_2', $matricula->mof_nota2 ? number_format($matricula->mof_nota2, 2) : $matricula->mof_nota2, ['class' => 'form-control', 'min' => 0, 'max' => 10, 'step' => 0.01, 'required']); !!}</td>
             <td>{!! Form::number('nota_3', $matricula->mof_nota3 ? number_format($matricula->mof_nota3, 2) : $matricula->mof_nota3, ['class' => 'form-control', 'min' => 0, 'max' => 10, 'step' => 0.01, 'required']); !!}</td>
             <td>{!! Form::number('recuperacao', $matricula->mof_recuperacao ? number_format($matricula->mof_recuperacao, 2) : $matricula->mof_recuperacao , ['class' => 'form-control recuperacao_' . $loop->index, 'min' => 0, 'max' => 10, 'step' => 0.01]); !!}</td>
             <td>{!! Form::number('final', $matricula->mof_final ? number_format($matricula->mof_final, 2) : $matricula->mof_final, ['class' => 'form-control final_' . $loop->index, 'min' => 0, 'max' => 10, 'step' => 0.01]); !!}</td>
-            <td class="media-final_{{$loop->index}}">{{ $matricula->mof_mediafinal ? number_format($matricula->mof_mediafinal, 2) : $matricula->mof_mediafinal }}</td>
+            <td class="media-final_row_{{$loop->index}}">{{ $matricula->mof_mediafinal ? number_format($matricula->mof_mediafinal, 2) : $matricula->mof_mediafinal }}</td>
             <td class="situacao_{{$loop->index}}">
                 @if(str_contains($matricula->situacao_matricula, 'Cursando'))
                     <span class="label bg-blue">{{$matricula->situacao_matricula}}</span>
